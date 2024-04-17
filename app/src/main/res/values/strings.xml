@@ -6,4 +6,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_subscription">Подписки</string>
     <string name="title_profile">Профиль</string>
+    <string name="hint_search_to">Куда - Турция</string>
+    <string name="hint_search_from">Откуда - Москва</string>
 </resources>
