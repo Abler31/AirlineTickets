@@ -3,23 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_tickets">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.abler31.airlineapp.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_tickets"
+        android:name="com.abler31.airlineapp.ui.tickets.TicketsFragment"
+        android:label="@string/title_tickets"
+        tools:layout="@layout/fragment_tickets" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.abler31.airlineapp.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_hotels"
+        android:name="com.abler31.airlineapp.ui.hotels.HotelFragment"
+        android:label="@string/title_hotels"
+        tools:layout="@layout/fragment_hotels"/>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.abler31.airlineapp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_shorter"
+        android:name="com.abler31.airlineapp.ui.shorter.ShorterFragment"
+        android:label="@string/title_shorter"
+        tools:layout="@layout/fragment_shorter"/>
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.abler31.airlineapp.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile"/>
+
+    <fragment
+        android:id="@+id/navigation_subscription"
+        android:name="com.abler31.airlineapp.ui.subscription.SubscriptionFragment"
+        android:label="fragment_subscription"
+        tools:layout="@layout/fragment_subscription" />
+
 </navigation>

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">AirLineApp</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_tickets">Авиабилеты</string>
+    <string name="title_hotels">Отели</string>
+    <string name="title_shorter">Короче</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_subscription">Подписки</string>
+    <string name="title_profile">Профиль</string>
 </resources>
