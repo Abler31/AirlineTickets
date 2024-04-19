@@ -1,13 +1,13 @@
-package com.abler31.airlineapp.ui.profile
+package com.abler31.airlineapp.hotels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ProfileViewModel : ViewModel() {
+class HotelViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is profile Fragment"
+        value = "This is hotel Fragment"
     }
     val text: LiveData<String> = _text
 }

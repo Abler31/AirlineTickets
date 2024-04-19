@@ -1,4 +1,4 @@
-package com.abler31.airlineapp.ui.tickets
+package com.abler31.airlineapp.tickets.presentation
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.abler31.airlineapp.R
-import com.abler31.airlineapp.ui.tickets.model.Offer
+import com.abler31.airlineapp.tickets.domain.model.Offer
 
 class TicketsRecyclerAdapter : RecyclerView.Adapter<TicketsRecyclerAdapter.TicketsViewHolder>() {
 
@@ -20,11 +20,10 @@ class TicketsRecyclerAdapter : RecyclerView.Adapter<TicketsRecyclerAdapter.Ticke
         private val priceTextView: TextView = itemView.findViewById(R.id.tv_recycler_item_price)
         private val img: ImageView = itemView.findViewById(R.id.iv_recycler_item_main)
 
-
         fun bind(offer: Offer) {
             titleTextView.text = offer.title
             townTextView.text = offer.town
-            priceTextView.text = offer.title
+            priceTextView.text = offer.price.value.toString()
                 .replace("(\\d)(?=(\\d{3})+$)"
                     .toRegex(), "$1 ").plus(" ₽")
 
@@ -33,9 +32,7 @@ class TicketsRecyclerAdapter : RecyclerView.Adapter<TicketsRecyclerAdapter.Ticke
                 2 -> img.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.img2))
                 3 -> img.setImageDrawable(ContextCompat.getDrawable(itemView.context, R.drawable.img3))
             }
-
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketsViewHolder {

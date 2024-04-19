@@ -1,4 +1,4 @@
-package com.abler31.airlineapp.ui.tickets.model
+package com.abler31.airlineapp.tickets.domain.model
 
 data class Offer(
     val id: Int,

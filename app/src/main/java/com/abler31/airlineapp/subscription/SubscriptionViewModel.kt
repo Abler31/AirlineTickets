@@ -1,13 +1,13 @@
-package com.abler31.airlineapp.ui.hotels
+package com.abler31.airlineapp.subscription
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HotelViewModel : ViewModel() {
+class SubscriptionViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is hotel Fragment"
+        value = "This is subscription Fragment"
     }
     val text: LiveData<String> = _text
 }

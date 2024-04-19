@@ -1,4 +1,4 @@
-package com.abler31.airlineapp.ui.hotels
+package com.abler31.airlineapp.hotels
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.abler31.airlineapp.R
-import com.abler31.airlineapp.ui.shorter.ShorterViewModel
+import com.abler31.airlineapp.shorter.ShorterViewModel
 
 class HotelFragment : Fragment(R.layout.fragment_hotels) {
 

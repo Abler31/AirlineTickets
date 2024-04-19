@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/navigation_tickets"
-        android:name="com.abler31.airlineapp.ui.tickets.TicketsFragment"
+        android:name="com.abler31.airlineapp.tickets.presentation.TicketsFragment"
         android:label="@string/title_tickets"
         tools:layout="@layout/fragment_tickets" />
 
     <fragment
         android:id="@+id/navigation_hotels"
-        android:name="com.abler31.airlineapp.ui.hotels.HotelFragment"
+        android:name="com.abler31.airlineapp.hotels.HotelFragment"
         android:label="@string/title_hotels"
         tools:layout="@layout/fragment_hotels"/>
 
     <fragment
         android:id="@+id/navigation_shorter"
-        android:name="com.abler31.airlineapp.ui.shorter.ShorterFragment"
+        android:name="com.abler31.airlineapp.shorter.ShorterFragment"
         android:label="@string/title_shorter"
         tools:layout="@layout/fragment_shorter"/>
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.abler31.airlineapp.ui.profile.ProfileFragment"
+        android:name="com.abler31.airlineapp.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile"/>
 
     <fragment
         android:id="@+id/navigation_subscription"
-        android:name="com.abler31.airlineapp.ui.subscription.SubscriptionFragment"
+        android:name="com.abler31.airlineapp.subscription.SubscriptionFragment"
         android:label="fragment_subscription"
         tools:layout="@layout/fragment_subscription" />
 
