@@ -113,6 +113,7 @@
 
 
         <LinearLayout
+            android:id="@+id/ll_difficult_route"
             android:layout_width="70dp"
             android:layout_height="90dp"
             android:orientation="vertical">
@@ -144,6 +145,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_anywhere"
             android:layout_width="79dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -176,6 +178,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_weekend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -208,6 +211,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_hot_weekdays"
             android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -258,6 +262,7 @@
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_dialog_istanbul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -318,6 +323,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_dialog_sochi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -376,6 +382,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_dialog_phuket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

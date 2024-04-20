@@ -3,7 +3,7 @@
     <string name="title_tickets">Авиабилеты</string>
     <string name="title_hotels">Отели</string>
     <string name="title_shorter">Короче</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="plug_text">Заглушка</string>
     <string name="title_subscription">Подписки</string>
     <string name="title_profile">Профиль</string>
     <string name="hint_search_to">Куда - Турция</string>

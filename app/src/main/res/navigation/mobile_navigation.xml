@@ -9,7 +9,11 @@
         android:id="@+id/navigation_tickets"
         android:name="com.abler31.airlineapp.tickets.presentation.TicketsFragment"
         android:label="@string/title_tickets"
-        tools:layout="@layout/fragment_tickets" />
+        tools:layout="@layout/fragment_tickets" >
+        <action
+            android:id="@+id/action_navigation_tickets_to_plugFragment"
+            app:destination="@id/plugFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_hotels"
@@ -34,5 +38,10 @@
         android:name="com.abler31.airlineapp.subscription.SubscriptionFragment"
         android:label="fragment_subscription"
         tools:layout="@layout/fragment_subscription" />
+    <fragment
+        android:id="@+id/plugFragment"
+        android:name="com.abler31.airlineapp.tickets.presentation.PlugFragment"
+        android:label="fragment_plug"
+        tools:layout="@layout/fragment_plug" />
 
 </navigation>
