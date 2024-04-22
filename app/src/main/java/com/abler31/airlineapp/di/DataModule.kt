@@ -1,5 +1,7 @@
 package com.abler31.airlineapp.di
 
+import com.abler31.airlineapp.allTickets.data.AllTicketsRepositoryImpl
+import com.abler31.airlineapp.allTickets.domain.repository.AllTicketsRepository
 import com.abler31.airlineapp.countrySelected.data.repository.CountrySelectedRepositoryImpl
 import com.abler31.airlineapp.countrySelected.domain.repository.CountrySelectedRepository
 import com.abler31.airlineapp.tickets.data.repository.TicketsRepositoryImpl
@@ -10,5 +12,6 @@ val dataModule  = module {
 
     single<TicketsRepository> { TicketsRepositoryImpl(get()) }
     single<CountrySelectedRepository> { CountrySelectedRepositoryImpl(get()) }
+    single<AllTicketsRepository> { AllTicketsRepositoryImpl(get()) }
 
 }

@@ -1,5 +1,6 @@
 package com.abler31.airlineapp.di
 
+import com.abler31.airlineapp.allTickets.presentation.AllTicketsViewModel
 import com.abler31.airlineapp.countrySelected.presentation.CountrySelectedViewModel
 import com.abler31.airlineapp.tickets.presentation.TicketsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -16,6 +17,12 @@ val appModule = module {
     viewModel<CountrySelectedViewModel>{
         CountrySelectedViewModel(
             getOffers = get()
+        )
+    }
+
+    viewModel<AllTicketsViewModel>{
+        AllTicketsViewModel(
+             getTickets = get()
         )
     }
 
