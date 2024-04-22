@@ -50,6 +50,10 @@
         android:id="@+id/countrySelected"
         android:name="com.abler31.airlineapp.countrySelected.presentation.CountrySelected"
         android:label="fragment_country_selected"
-        tools:layout="@layout/fragment_country_selected" />
+        tools:layout="@layout/fragment_country_selected" >
+        <action
+            android:id="@+id/action_countrySelected_to_navigation_tickets"
+            app:destination="@id/navigation_tickets" />
+    </fragment>
 
 </navigation>

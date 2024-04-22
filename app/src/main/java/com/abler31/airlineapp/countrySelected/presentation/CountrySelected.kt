@@ -1,13 +1,21 @@
 package com.abler31.airlineapp.countrySelected.presentation
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.navigation.fragment.findNavController
 import com.abler31.airlineapp.R
 import com.abler31.airlineapp.Resource
 import com.abler31.airlineapp.tickets.presentation.TicketsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class CountrySelected : Fragment(R.layout.fragment_country_selected) {
 
@@ -57,6 +65,78 @@ class CountrySelected : Fragment(R.layout.fragment_country_selected) {
             }
         }
         vm.getTicketsOffers()
+
+        //change icon
+        val changeIcon = view.findViewById<ImageView>(R.id.iv_change)
+        val from = view.findViewById<EditText>(R.id.et_search_from_selected)
+        val to = view.findViewById<EditText>(R.id.et_search_to_selected)
+
+        changeIcon.setOnClickListener {
+            val temp = from.text
+            from.text = to.text
+            to.text = temp
+        }
+
+        val datePickerTo = view.findViewById<CardView>(R.id.cv_date_picker_to)
+        val datePickerBack = view.findViewById<CardView>(R.id.cv_date_picker_back)
+
+        datePickerTo.setOnClickListener {
+            val currentDate = Calendar.getInstance()
+            val dateTo = view.findViewById<TextView>(R.id.tv_countrySelected_date_to)
+            val dayOfWeekTo = view.findViewById<TextView>(R.id.tv_countrySelected_dayOfWeek_to)
+
+            val datePickerDialog = DatePickerDialog(
+                requireContext(),
+                { _, year, month, dayOfMonth ->
+                    val selectedDate = Calendar.getInstance()
+                    selectedDate.set(year, month, dayOfMonth)
+
+                    val dateFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
+                    val formattedDate = dateFormat.format(selectedDate.time)
+                    val dayOfWeekFormat = SimpleDateFormat("E", Locale.getDefault())
+                    val dayOfWeek = dayOfWeekFormat.format(selectedDate.time)
+
+                    dateTo.text = formattedDate.replace(".", "")
+                    dayOfWeekTo.text = ", $dayOfWeek"
+                },
+                currentDate.get(Calendar.YEAR),
+                currentDate.get(Calendar.MONTH),
+                currentDate.get(Calendar.DAY_OF_MONTH)
+            )
+
+            // Отобразите DatePickerDialog
+            datePickerDialog.show()
+        }
+
+        datePickerBack.setOnClickListener {
+
+            val currentDate = Calendar.getInstance()
+
+            val datePickerDialog = DatePickerDialog(
+                requireContext(),
+                { _, year, month, dayOfMonth ->
+                    val selectedDate = Calendar.getInstance()
+                    selectedDate.set(year, month, dayOfMonth)
+
+                    val dateFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
+                    val formattedDate = dateFormat.format(selectedDate.time)
+                    val dayOfWeekFormat = SimpleDateFormat("E", Locale.getDefault())
+                    val dayOfWeek = dayOfWeekFormat.format(selectedDate.time)
+
+
+                },
+                currentDate.get(Calendar.YEAR),
+                currentDate.get(Calendar.MONTH),
+                currentDate.get(Calendar.DAY_OF_MONTH)
+            )
+
+            datePickerDialog.show()
+        }
+
+        val arrowBack = view.findViewById<ImageView>(R.id.iv_arrow_back_country_selected)
+        arrowBack.setOnClickListener {
+            findNavController().navigate(R.id.action_countrySelected_to_navigation_tickets)
+        }
 
     }
 }

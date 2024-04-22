@@ -21,7 +21,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/iv_arrow_back"
+                android:id="@+id/iv_arrow_back_country_selected"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -30,7 +30,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <EditText
                 android:id="@+id/et_search_from_selected"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/grey6"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@id/iv_arrow_back"
+                app:layout_constraintStart_toEndOf="@id/iv_arrow_back_country_selected"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="40dp" />
 
@@ -67,10 +67,10 @@
                 android:layout_marginEnd="16dp"
                 android:background="@color/grey5"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@id/iv_arrow_back"
+                app:layout_constraintStart_toStartOf="@id/iv_arrow_back_country_selected"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <EditText
                 android:id="@+id/et_search_to_selected"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                 android:textColorHint="@color/grey6"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/iv_arrow_back" />
+                app:layout_constraintStart_toEndOf="@id/iv_arrow_back_country_selected" />
 
             <ImageView
                 android:id="@+id/iv_close_country_selected"
@@ -111,6 +111,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cv_date_picker_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -144,6 +145,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cv_date_picker_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -158,6 +160,7 @@
                     android:layout_marginVertical="8dp">
 
                     <TextView
+                        android:id="@+id/tv_countrySelected_date_to"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="24 фев"
@@ -166,6 +169,7 @@
                         android:textColor="@color/white"/>
 
                     <TextView
+                        android:id="@+id/tv_countrySelected_dayOfWeek_to"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=", сб"
