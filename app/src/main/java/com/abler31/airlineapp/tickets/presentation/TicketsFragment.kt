@@ -14,18 +14,14 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abler31.airlineapp.R
-import com.abler31.airlineapp.tickets.domain.Resource
-import kotlinx.coroutines.delay
+import com.abler31.airlineapp.Resource
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.w3c.dom.Text
 
 class TicketsFragment : Fragment(R.layout.fragment_tickets) {
 
@@ -117,6 +113,7 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
         }
         searchTo.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus && !searchTo.text.isNullOrBlank()) {
+                findNavController().navigate(R.id.action_navigation_tickets_to_countrySelected)
                 dialog.dismiss()
             }
         }
@@ -131,6 +128,7 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
 
             override fun afterTextChanged(s: Editable?) {
                 if (!searchTo.isFocused && !searchTo.text.isNullOrBlank()) {
+                    findNavController().navigate(R.id.action_navigation_tickets_to_countrySelected)
                     dialog.dismiss()
                 }
             }

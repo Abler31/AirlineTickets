@@ -1,4 +1,4 @@
-package com.abler31.airlineapp.tickets.domain
+package com.abler31.airlineapp
 
 sealed class Resource<T>(
     val data: T? = null,

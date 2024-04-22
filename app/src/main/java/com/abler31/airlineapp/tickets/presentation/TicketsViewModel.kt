@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.abler31.airlineapp.tickets.domain.Resource
+import com.abler31.airlineapp.Resource
 import com.abler31.airlineapp.tickets.domain.model.Offer
 import com.abler31.airlineapp.tickets.domain.usecase.GetOffers
 import kotlinx.coroutines.Dispatchers

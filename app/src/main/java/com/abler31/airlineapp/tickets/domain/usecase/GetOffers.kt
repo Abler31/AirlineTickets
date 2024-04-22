@@ -1,6 +1,6 @@
 package com.abler31.airlineapp.tickets.domain.usecase
 
-import com.abler31.airlineapp.tickets.domain.Resource
+import com.abler31.airlineapp.Resource
 import com.abler31.airlineapp.tickets.domain.model.Offer
 import com.abler31.airlineapp.tickets.domain.repository.TicketsRepository
 

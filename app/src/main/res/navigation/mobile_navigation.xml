@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_tickets_to_plugFragment"
             app:destination="@id/plugFragment" />
+        <action
+            android:id="@+id/action_navigation_tickets_to_countrySelected"
+            app:destination="@id/countrySelected" />
     </fragment>
 
     <fragment
@@ -43,5 +46,10 @@
         android:name="com.abler31.airlineapp.tickets.presentation.PlugFragment"
         android:label="fragment_plug"
         tools:layout="@layout/fragment_plug" />
+    <fragment
+        android:id="@+id/countrySelected"
+        android:name="com.abler31.airlineapp.countrySelected.presentation.CountrySelected"
+        android:label="fragment_country_selected"
+        tools:layout="@layout/fragment_country_selected" />
 
 </navigation>
