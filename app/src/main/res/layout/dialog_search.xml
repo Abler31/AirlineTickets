@@ -6,6 +6,15 @@
     android:layout_marginTop="24dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    
+    <View
+        android:layout_width="35dp"
+        android:layout_height="5dp"
+        android:background="@drawable/icon_line"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_search_dialog"

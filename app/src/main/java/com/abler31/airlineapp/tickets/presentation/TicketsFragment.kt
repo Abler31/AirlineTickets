@@ -1,6 +1,8 @@
 package com.abler31.airlineapp.tickets.presentation
 
 import android.app.Dialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -13,8 +15,10 @@ import android.view.ViewGroup
 import android.view.Window
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -29,10 +33,18 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
     private val vm by viewModel<TicketsViewModel>()
     private lateinit var ticketsRecyclerAdapter: TicketsRecyclerAdapter
     lateinit var ticketsRecyclerView: RecyclerView
+    lateinit var dataStoredPreferences : SharedPreferences
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tvFrom = view.findViewById<TextView>(R.id.et_search_from)
         val tvTo = view.findViewById<TextView>(R.id.et_search_to)
+        val searchCV = view.findViewById<CardView>(R.id.cv_search_tickets)
+        dataStoredPreferences =
+            requireContext().getSharedPreferences("dataStored", Context.MODE_PRIVATE)
+
+// Получаем сохраненную строку по ключу "saved_text", если значение не найдено, возвращаем пустую строку
+        val savedText = dataStoredPreferences.getString("saved_text", "")
+        tvFrom.text = savedText
 
         ticketsRecyclerAdapter = TicketsRecyclerAdapter()
         ticketsRecyclerView = view.findViewById(R.id.rv_tickets)
@@ -61,6 +73,9 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
         tvTo.setOnClickListener {
             showBottomDialog()
         }
+        searchCV.setOnClickListener{
+            showBottomDialog()
+        }
 
 
     }
@@ -72,6 +87,7 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
         dialog.setContentView(R.layout.dialog_search)
         val searchTo = dialog.findViewById<EditText>(R.id.et_search_to_dialog)
         val searchFrom = dialog.findViewById<EditText>(R.id.et_search_from_dialog)
+        val close = dialog.findViewById<ImageView>(R.id.iv_close_dialog)
 
         val difficultRoute = dialog.findViewById<LinearLayout>(R.id.ll_difficult_route)
         val anywhere = dialog.findViewById<LinearLayout>(R.id.ll_anywhere)
@@ -80,6 +96,9 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
         val istanbul = dialog.findViewById<ConstraintLayout>(R.id.cl_dialog_istanbul)
         val sochi = dialog.findViewById<ConstraintLayout>(R.id.cl_dialog_sochi)
         val phuket = dialog.findViewById<ConstraintLayout>(R.id.cl_dialog_phuket)
+
+        val savedText = dataStoredPreferences.getString("saved_text", "")
+        searchFrom.setText(savedText)
 
         // InputFilter для кириллицы
         val cyrillicFilter = InputFilter { source, _, _, _, _, _ ->
@@ -130,6 +149,10 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
         searchTo.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus && !searchTo.text.isNullOrBlank()) {
                 findNavController().navigate(R.id.action_navigation_tickets_to_countrySelected)
+                with(dataStoredPreferences.edit()) {
+                    putString("saved_text", searchFrom.text.toString())
+                    apply()
+                }
                 dialog.dismiss()
             }
         }
@@ -145,10 +168,21 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
             override fun afterTextChanged(s: Editable?) {
                 if (!searchTo.isFocused && !searchTo.text.isNullOrBlank()) {
                     findNavController().navigate(R.id.action_navigation_tickets_to_countrySelected)
+                    with(dataStoredPreferences.edit()) {
+                        putString("saved_text", searchFrom.text.toString())
+                        apply()
+                    }
                     dialog.dismiss()
                 }
             }
         })
+
+        close.setOnClickListener {
+            searchTo.text.clear()
+        }
+
+
+
 
         dialog.show()
         dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
