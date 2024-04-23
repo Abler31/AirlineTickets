@@ -77,6 +77,15 @@
         <action
             android:id="@+id/allTicketsFragment_to_countrySelected"
             app:destination="@id/countrySelected" />
+        <argument
+            android:name="from"
+            app:argType="string" />
+        <argument
+            android:name="to"
+            app:argType="string" />
+        <argument
+            android:name="date"
+            app:argType="string" />
     </fragment>
 
 

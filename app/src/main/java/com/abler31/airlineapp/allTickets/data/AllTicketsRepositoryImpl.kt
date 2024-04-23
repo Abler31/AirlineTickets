@@ -21,16 +21,13 @@ class AllTicketsRepositoryImpl(private val context: Context) : AllTicketsReposit
     override suspend fun getAllTickets(): Resource<List<TicketBadged>> {
         return withContext(Dispatchers.IO) {
             try {
-                Log.d("test", "before open")
                 val jsonString =
                     context.assets.open("tickets.json").bufferedReader().use { it.readText() }
                 val data = readDataFromJson(jsonString)
-                Log.d("test", "after read")
                 Resource.Success(data = data)
             } catch (e: IOException) {
                 Resource.Error("IO Exception")
             } catch (e: Exception) {
-                Log.d("test", "exception")
                 Resource.Error(errorMessage = "Something went wrong")
             }
         }
@@ -63,7 +60,6 @@ class AllTicketsRepositoryImpl(private val context: Context) : AllTicketsReposit
 
             val hasVisaTransfer = ticketObject.getBoolean("has_visa_transfer")
             val luggageObject = if (ticketObject.has("luggage")) {
-                Log.d("test", "has luggage")
                 val luggage = ticketObject.getJSONObject("luggage")
                 val hasLuggage = luggage.getBoolean("has_luggage")
                 val priceObject = if (luggage.has("price")) {
@@ -76,7 +72,6 @@ class AllTicketsRepositoryImpl(private val context: Context) : AllTicketsReposit
             } else {
                 null
             }
-            Log.d("test", "luggage ${luggageObject}")
             val handLuggageObject = ticketObject.getJSONObject("hand_luggage")
             val handLuggage = HandLuggage(
                 handLuggageObject.getBoolean("has_hand_luggage"),
@@ -101,7 +96,6 @@ class AllTicketsRepositoryImpl(private val context: Context) : AllTicketsReposit
                 is_returnable = isReturnable,
                 is_exchangable = isExchangable
             )
-            Log.d("test", "before return ${ticketBadged.id}")
             ticketBadgeds.add(ticketBadged)
         }
 

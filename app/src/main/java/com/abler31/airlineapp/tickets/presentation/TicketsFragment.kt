@@ -33,7 +33,7 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
     private val vm by viewModel<TicketsViewModel>()
     private lateinit var ticketsRecyclerAdapter: TicketsRecyclerAdapter
     lateinit var ticketsRecyclerView: RecyclerView
-    lateinit var dataStoredPreferences : SharedPreferences
+    lateinit var dataStoredPreferences: SharedPreferences
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val tvFrom = view.findViewById<TextView>(R.id.et_search_from)
@@ -42,15 +42,15 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
         dataStoredPreferences =
             requireContext().getSharedPreferences("dataStored", Context.MODE_PRIVATE)
 
-// Получаем сохраненную строку по ключу "saved_text", если значение не найдено, возвращаем пустую строку
         val savedText = dataStoredPreferences.getString("saved_text", "")
         tvFrom.text = savedText
 
         ticketsRecyclerAdapter = TicketsRecyclerAdapter()
         ticketsRecyclerView = view.findViewById(R.id.rv_tickets)
-        ticketsRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        ticketsRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         ticketsRecyclerView.adapter = ticketsRecyclerAdapter
-        vm.offers.observe(viewLifecycleOwner){
+        vm.offers.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> {
                     ticketsRecyclerAdapter.setData(it.data!!)
@@ -73,14 +73,14 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
         tvTo.setOnClickListener {
             showBottomDialog()
         }
-        searchCV.setOnClickListener{
+        searchCV.setOnClickListener {
             showBottomDialog()
         }
 
 
     }
 
-    private fun showBottomDialog(){
+    private fun showBottomDialog() {
         val dialog = Dialog(requireContext())
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -148,7 +148,10 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
         }
         searchTo.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus && !searchTo.text.isNullOrBlank()) {
-                val direction = TicketsFragmentDirections.actionNavigationTicketsToCountrySelected(searchFrom.text.toString(), searchTo.text.toString())
+                val direction = TicketsFragmentDirections.actionNavigationTicketsToCountrySelected(
+                    searchFrom.text.toString(),
+                    searchTo.text.toString()
+                )
                 findNavController().navigate(direction)
                 with(dataStoredPreferences.edit()) {
                     putString("saved_text", searchFrom.text.toString())
@@ -168,7 +171,11 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
 
             override fun afterTextChanged(s: Editable?) {
                 if (!searchTo.isFocused && !searchTo.text.isNullOrBlank()) {
-                    val direction = TicketsFragmentDirections.actionNavigationTicketsToCountrySelected(searchFrom.text.toString(), searchTo.text.toString())
+                    val direction =
+                        TicketsFragmentDirections.actionNavigationTicketsToCountrySelected(
+                            searchFrom.text.toString(),
+                            searchTo.text.toString()
+                        )
                     findNavController().navigate(direction)
                     with(dataStoredPreferences.edit()) {
                         putString("saved_text", searchFrom.text.toString())
@@ -183,16 +190,13 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
             searchTo.text.clear()
         }
 
-
-
-
         dialog.show()
-        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        dialog.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window!!.attributes.windowAnimations = R.style.DialogAnimation
         dialog.window?.setGravity(Gravity.BOTTOM)
-
-
     }
-
 }

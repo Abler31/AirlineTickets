@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,7 @@ import com.abler31.airlineapp.Resource
 import com.abler31.airlineapp.allTickets.domain.model.DisplayableItem
 import com.abler31.airlineapp.allTickets.domain.model.TicketBadged
 import com.abler31.airlineapp.allTickets.domain.model.Ticket
+import com.abler31.airlineapp.countrySelected.presentation.CountrySelectedArgs
 import com.abler31.airlineapp.tickets.presentation.TicketsFragmentDirections
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -27,8 +29,14 @@ class AllTicketsFragment : Fragment(R.layout.fragment_all_tickets) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val bundle = arguments
+        val args = AllTicketsFragmentArgs.fromBundle(bundle!!)
         val arrowBack = view.findViewById<ImageView>(R.id.iv_arrow_back_all_tickets)
+        val fromTo = view.findViewById<TextView>(R.id.tv_all_tickets_from_to)
+        val date = view.findViewById<TextView>(R.id.tv_all_tickets_date)
+
+        fromTo.text = "${args.from}-${args.to}"
+        date.text = "${args.date}, 1 пассажир"
 
         rv = view.findViewById(R.id.rv_all_tickets)
         rv.layoutManager = LinearLayoutManager(requireContext())
