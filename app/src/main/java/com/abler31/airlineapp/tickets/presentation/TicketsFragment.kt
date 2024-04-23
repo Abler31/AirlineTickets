@@ -148,7 +148,8 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
         }
         searchTo.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus && !searchTo.text.isNullOrBlank()) {
-                findNavController().navigate(R.id.action_navigation_tickets_to_countrySelected)
+                val direction = TicketsFragmentDirections.actionNavigationTicketsToCountrySelected(searchFrom.text.toString(), searchTo.text.toString())
+                findNavController().navigate(direction)
                 with(dataStoredPreferences.edit()) {
                     putString("saved_text", searchFrom.text.toString())
                     apply()
@@ -167,7 +168,8 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
 
             override fun afterTextChanged(s: Editable?) {
                 if (!searchTo.isFocused && !searchTo.text.isNullOrBlank()) {
-                    findNavController().navigate(R.id.action_navigation_tickets_to_countrySelected)
+                    val direction = TicketsFragmentDirections.actionNavigationTicketsToCountrySelected(searchFrom.text.toString(), searchTo.text.toString())
+                    findNavController().navigate(direction)
                     with(dataStoredPreferences.edit()) {
                         putString("saved_text", searchFrom.text.toString())
                         apply()

@@ -24,6 +24,8 @@ class CountrySelected : Fragment(R.layout.fragment_country_selected) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val bundle = arguments
+        val args = CountrySelectedArgs.fromBundle(bundle!!)
         val name1 = view.findViewById<TextView>(R.id.tv_country_selected_direct_flights1)
         val price1 = view.findViewById<TextView>(R.id.tv_country_selected_price_red)
         val time1 = view.findViewById<TextView>(R.id.tv_country_selected_time1)
@@ -37,6 +39,12 @@ class CountrySelected : Fragment(R.layout.fragment_country_selected) {
         val time3 = view.findViewById<TextView>(R.id.tv_country_selected_time3)
 
         val button = view.findViewById<MaterialButton>(R.id.button_show_all)
+        val changeIcon = view.findViewById<ImageView>(R.id.iv_change)
+        val from = view.findViewById<EditText>(R.id.et_search_from_selected)
+        val to = view.findViewById<EditText>(R.id.et_search_to_selected)
+
+        from.setText(args.tvFrom)
+        to.setText(args.tvTo)
 
 
         vm.ticketsOffers.observe(viewLifecycleOwner){
@@ -70,9 +78,7 @@ class CountrySelected : Fragment(R.layout.fragment_country_selected) {
         vm.getTicketsOffers()
 
         //change icon
-        val changeIcon = view.findViewById<ImageView>(R.id.iv_change)
-        val from = view.findViewById<EditText>(R.id.et_search_from_selected)
-        val to = view.findViewById<EditText>(R.id.et_search_to_selected)
+
 
         changeIcon.setOnClickListener {
             val temp = from.text

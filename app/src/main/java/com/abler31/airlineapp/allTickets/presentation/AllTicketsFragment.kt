@@ -12,6 +12,7 @@ import com.abler31.airlineapp.Resource
 import com.abler31.airlineapp.allTickets.domain.model.DisplayableItem
 import com.abler31.airlineapp.allTickets.domain.model.TicketBadged
 import com.abler31.airlineapp.allTickets.domain.model.Ticket
+import com.abler31.airlineapp.tickets.presentation.TicketsFragmentDirections
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -23,10 +24,6 @@ class AllTicketsFragment : Fragment(R.layout.fragment_all_tickets) {
         AllTicketsFragmentDelegates.ticketDelegates(),
         AllTicketsFragmentDelegates.ticketBadgedDelegates()
     )
-
-
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -58,7 +55,8 @@ class AllTicketsFragment : Fragment(R.layout.fragment_all_tickets) {
         rv.adapter = adapter
 
         arrowBack.setOnClickListener {
-            findNavController().navigate(R.id.allTicketsFragment_to_countrySelected)
+            val direction = AllTicketsFragmentDirections.allTicketsFragmentToCountrySelected("", "")
+            findNavController().navigate(direction)
         }
     }
 
