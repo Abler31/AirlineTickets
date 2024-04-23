@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.abler31.airlineapp.R
 import com.abler31.airlineapp.Resource
 import com.abler31.airlineapp.tickets.presentation.TicketsViewModel
+import com.google.android.material.button.MaterialButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -34,6 +35,8 @@ class CountrySelected : Fragment(R.layout.fragment_country_selected) {
         val name3 = view.findViewById<TextView>(R.id.tv_country_selected_direct_flights3)
         val price3 = view.findViewById<TextView>(R.id.tv_country_selected_price_white)
         val time3 = view.findViewById<TextView>(R.id.tv_country_selected_time3)
+
+        val button = view.findViewById<MaterialButton>(R.id.button_show_all)
 
 
         vm.ticketsOffers.observe(viewLifecycleOwner){
@@ -136,6 +139,10 @@ class CountrySelected : Fragment(R.layout.fragment_country_selected) {
         val arrowBack = view.findViewById<ImageView>(R.id.iv_arrow_back_country_selected)
         arrowBack.setOnClickListener {
             findNavController().navigate(R.id.action_countrySelected_to_navigation_tickets)
+        }
+
+        button.setOnClickListener {
+            findNavController().navigate(R.id.action_countrySelected_to_allTicketsFragment)
         }
 
     }

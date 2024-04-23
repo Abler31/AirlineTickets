@@ -1,7 +1,8 @@
 package com.abler31.airlineapp.allTickets.domain.model
 
-class Ticket (
+data class TicketBadged(
     val arrival: Arrival,
+    val badge: String?,
     val company: String,
     val departure: Departure,
     val hand_luggage: HandLuggage,
