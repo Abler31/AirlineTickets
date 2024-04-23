@@ -3,6 +3,8 @@ package com.abler31.airlineapp.allTickets.presentation
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.abler31.airlineapp.R
@@ -29,6 +31,8 @@ class AllTicketsFragment : Fragment(R.layout.fragment_all_tickets) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val arrowBack = view.findViewById<ImageView>(R.id.iv_arrow_back_all_tickets)
+
         rv = view.findViewById(R.id.rv_all_tickets)
         rv.layoutManager = LinearLayoutManager(requireContext())
 
@@ -52,6 +56,10 @@ class AllTicketsFragment : Fragment(R.layout.fragment_all_tickets) {
         }
         vm.getTickets()
         rv.adapter = adapter
+
+        arrowBack.setOnClickListener {
+            findNavController().navigate(R.id.allTicketsFragment_to_countrySelected)
+        }
     }
 
     private fun setData(data: List<TicketBadged>){

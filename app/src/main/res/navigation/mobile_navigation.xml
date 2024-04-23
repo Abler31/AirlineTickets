@@ -62,6 +62,10 @@
         android:id="@+id/allTicketsFragment"
         android:name="com.abler31.airlineapp.allTickets.presentation.AllTicketsFragment"
         android:label="fragment_all_tickets"
-        tools:layout="@layout/fragment_all_tickets" />
+        tools:layout="@layout/fragment_all_tickets" >
+        <action
+            android:id="@+id/allTicketsFragment_to_countrySelected"
+            app:destination="@id/countrySelected" />
+    </fragment>
 
 </navigation>

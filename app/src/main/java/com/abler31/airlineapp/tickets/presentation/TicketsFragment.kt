@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.Gravity
 import android.view.View
@@ -70,6 +71,7 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.dialog_search)
         val searchTo = dialog.findViewById<EditText>(R.id.et_search_to_dialog)
+        val searchFrom = dialog.findViewById<EditText>(R.id.et_search_from_dialog)
 
         val difficultRoute = dialog.findViewById<LinearLayout>(R.id.ll_difficult_route)
         val anywhere = dialog.findViewById<LinearLayout>(R.id.ll_anywhere)
@@ -78,6 +80,20 @@ class TicketsFragment : Fragment(R.layout.fragment_tickets) {
         val istanbul = dialog.findViewById<ConstraintLayout>(R.id.cl_dialog_istanbul)
         val sochi = dialog.findViewById<ConstraintLayout>(R.id.cl_dialog_sochi)
         val phuket = dialog.findViewById<ConstraintLayout>(R.id.cl_dialog_phuket)
+
+        // InputFilter для кириллицы
+        val cyrillicFilter = InputFilter { source, _, _, _, _, _ ->
+            for (char in source) {
+                if (!char.isLetter() || char !in '\u0400'..'\u04FF') {
+                    return@InputFilter ""
+                }
+            }
+            null
+        }
+
+        // Применяем InputFilter к EditText
+        searchTo.filters = arrayOf(cyrillicFilter)
+        searchFrom.filters = arrayOf(cyrillicFilter)
 
         difficultRoute.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_tickets_to_plugFragment)
